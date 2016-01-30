@@ -1,0 +1,23 @@
+.signup-container {
+	max-width: 764px;
+}
+
+.logo-box-signup h1 ,
+.logo-box-signup p{
+	text-align: center;
+}
+
+.signup-box {
+	border: 2px solid #000;
+	padding: 30px;
+}
+h1,
+h2,
+h3,
+h4,
+p {
+	margin: 0;
+}
+.logo-box-signup {
+	padding-top: 60px;
+}
