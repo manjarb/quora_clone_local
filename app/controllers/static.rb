@@ -21,16 +21,22 @@ get '/user/list' do
 	# }
 end
 
+enable :sessions
+
 post '/login' do
-	user = User.find_by_email(params[:email])
+	user = User.find_by(email: params[:email])
 	if user.password == params[:password]
-		"give_token"
+		session["email"] = params[:email]
+		#{}"ss start"
+		erb :"questions/top_stories"
 	else
-		"redirect_to home_url"
+		erb :"users/signup"
 	end
 	
 end
 
-post '/logout' do
-	
+get '/logout' do
+	session["email"] = nil
+
+	erb :"users/signup"
 end

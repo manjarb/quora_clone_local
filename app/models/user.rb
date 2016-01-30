@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
     end
 
     def self.authenticate(email,password)
+        
     end
 
     # def self.password_convert(password_ori)
