@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 	# This is Sinatra! Remember to create a migration!
 
 	attr_accessor :password
-    #attr_writer :password_hash
+    attr_writer :password_hash
 
 	validates :username, presence: true, uniqueness: true
 	validates :email, :format => { :with => /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i ,
@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
     validates :encrypted_password, presence: true
 
     def password
-        @password ||= Password.new(password_hash)
+        @password ||= Password.new(encrypted_password)
     end
 
     def password=(new_password)
@@ -25,6 +25,15 @@ class User < ActiveRecord::Base
     def list
         User.all
     end
+
+    def self.authenticate(email,password)
+    end
+
+    # def self.password_convert(password_ori)
+    #     p_p = Password.create(password_ori)
+    #     p_h ||= Password.new(p_p)
+    #     return p_h
+    # end
 
     #before_validation :checking_confirm_password
 
