@@ -1,8 +1,52 @@
 <div class="container">
-	<h1>Top stories</h1>
+<!-- 	<h1>Top stories</h1>
 	<a href="/logout">
 	<button class="btn btn-danger">
 		logout
 	</button>
-	</a>
+	</a> -->
+	<div class="row">
+		<div class="col-md-3">
+			<section class="stories_section">
+				<h1>Subject</h1>
+				<ul class="subject_list">
+					<li>
+						<a href="#">Top Stories</a>
+					</li>
+					<li>
+						<a href="#">Food</a>
+					</li>
+					<li>
+						<a href="#">Sport</a>
+					</li>
+				</ul>
+			</section>
+		</div>
+		<div class="col-md-9 border-left-grey padding-bottom-extra">
+			<section class="stories_section">
+				<h1>Stories</h1>
+
+				<% questions.each do |question| %>
+					<div class="stories-feed-box">
+						<a href="/question/1">
+							<h2><%= question.headline %></h2>
+						</a>
+						<h3>
+							<% if user = User.find_by(id: question.user_id) %>
+								<%= user.username %>
+							<% end %>
+						</h3>
+						<a href="/question/1">
+							<p>
+								<%= question.content %>
+							</p>
+						</a>
+					</div>
+				<% end %>
+
+			</section>
+		</div>
+	</div>
+
+
 </div>

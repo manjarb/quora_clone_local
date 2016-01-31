@@ -25,12 +25,20 @@ enable :sessions
 
 post '/login' do
 	user = User.find_by(email: params[:email])
+	if user
+
+	else
+
+	end
+
 	if user.password == params[:password]
 		session["email"] = params[:email]
 		#{}"ss start"
-		erb :"questions/top_stories"
+		#erb :"questions/top_stories"
+		redirect '/top_stories'
 	else
-		erb :"users/signup"
+		#erb :"users/signup"
+		redirect '/'
 	end
 	
 end
@@ -38,5 +46,23 @@ end
 get '/logout' do
 	session["email"] = nil
 
-	erb :"users/signup"
+	redirect '/'
+end
+
+get '/users/:id' do
+	erb :"users/profile"
+end
+
+get '/top_stories' do
+	questions = Question.all
+
+	if questions
+		erb :"questions/top_stories" ,locals: {questions: questions} 
+	else
+		"Not found questions"
+	end
+end
+
+get '/question/:id' do
+	erb :"questions/question"
 end
