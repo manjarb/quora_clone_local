@@ -28,7 +28,7 @@
 
 				<% questions.each do |question| %>
 					<div class="stories-feed-box">
-						<a href="/question/1">
+						<a href="/question/<%= question.id %>">
 							<h2><%= question.headline %></h2>
 						</a>
 						<h3>
@@ -36,7 +36,7 @@
 								<%= user.username %>
 							<% end %>
 						</h3>
-						<a href="/question/1">
+						<a href="/question/<%= question.id %>">
 							<p>
 								<%= question.content %>
 							</p>
