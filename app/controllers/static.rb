@@ -49,7 +49,16 @@ get '/logout' do
 end
 
 get '/users/:id' do
-	erb :"users/profile"
+
+	if logged_in?
+		questions = Question.where(user_id: params[:id])
+		answers = Answer.where(user_id: params[:id])
+
+		erb :"users/profile" ,locals: {questions: questions,answers: answers} 
+	else
+		redirect "/"
+	end
+	
 end
 
 get '/top_stories' do
@@ -64,12 +73,17 @@ end
 
 get '/question/:id' do
 
-	question = Question.find_by(id: params[:id])
+	if logged_in?
+		question = Question.find_by(id: params[:id])
 
-	if question
-		erb :"questions/question" ,locals: {question: question} 
+		if question
+			erb :"questions/question" ,locals: {question: question} 
+		else
+			redirect "/top_stories"
+		end
 	else
-		redirect "/top_stories"
+		redirect "/"
+
 	end
 
 end

@@ -5,7 +5,11 @@
 			<%= question.content %>
 		</p>
 		<div class="question-user-box">
-			<p class="pull-right">Username</p>
+			<p class="pull-right">
+				<% if user = User.find_by(id: question.user_id) %>
+					<%= user.username %>
+				<% end %>
+			</p>
 		</div>
 	</section>
 	<% if answers = Answer.where(question_id: question.id) %>
@@ -18,7 +22,11 @@
 						<%= answer.content %>
 					</p>
 					<div class="answer-user-box">
-						<p>Username</p>
+						<p>
+							<% if user = User.find_by(id: answer.user_id) %>
+								<%= user.username %>
+							<% end %>
+						</p>
 					</div>
 				</div>
 			<% end %>

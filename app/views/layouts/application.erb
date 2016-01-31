@@ -19,16 +19,19 @@
 						Aubdul
 					</a>
 				</div>
-				<div class="nav navbar-nav navbar-right">
-					<a class="navbar-brand" href="/users/1">
-						Username
-					</a>
-					<a class="navbar-brand" href="/logout">
-						Logout
-					</a>
-				</div>
+				<% if logged_in? %>
+					<div class="nav navbar-nav navbar-right">
+						<a class="navbar-brand" href="/users/1">
+							<%= current_user.username %>
+						</a>
+						<a class="navbar-brand" href="/logout">
+							Logout
+						</a>
+					</div>
+				<% end %>
 			</div>
 		</nav>
+		
 
 		<%= yield %>
 	</body>
