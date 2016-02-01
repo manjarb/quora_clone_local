@@ -1,3 +1,5 @@
+require 'will_paginate/active_record'
+
 get '/' do
   #erb :"static/index"
 
@@ -68,7 +70,8 @@ get '/users/:id' do
 end
 
 get '/top_stories' do
-	questions = Question.all
+	questions = Question.all.paginate(:page => params[:page]).order('id DESC')
+	#questions = Question.get_all_paginate
 
 	if questions
 		erb :"questions/top_stories" ,locals: {questions: questions} 
@@ -108,7 +111,17 @@ get '/vote_down/:id' do
 	redirect "/question/" + params[:id]
 end
 
+get '/stories/:tag' do
 
+	questions = Question.order('id DESC').where(tag: params[:tag]).paginate(:page => params[:page])
+
+	if questions
+		erb :"questions/top_stories" ,locals: {questions: questions} 
+	else
+		redirect '/top_stories'
+	end
+		
+end
 
 
 

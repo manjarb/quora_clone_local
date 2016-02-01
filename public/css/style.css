@@ -105,6 +105,10 @@ p {
 	margin-bottom: 15px;
 }
 
+.morecontent span {
+	display: none;
+}
+
 /*.user-question-list-box {
 	padding: 15px;
 }*/
