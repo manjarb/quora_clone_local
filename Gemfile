@@ -27,6 +27,7 @@ gem 'rspec'
 gem 'faker'
 
 gem 'will_paginate', '~> 3.0.6'
+gem 'bcrypt'
 
 group :development, :test do
 	# Adding shotgun for local web hosting
