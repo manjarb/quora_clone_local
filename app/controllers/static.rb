@@ -1,12 +1,18 @@
 get '/' do
   #erb :"static/index"
-  erb :"users/signup"
+
+  if logged_in?
+		redirect '/top_stories'
+	else
+		erb :"users/signup"
+	end
 end
 
 post '/signup' do
 	user = User.new(params[:user])
 	if user.save
-		"donee"
+		session["email"] = params[:user][:email]
+		redirect '/top_stories'
 	else
 		user.errors.full_messages
 	end
@@ -87,3 +93,32 @@ get '/question/:id' do
 	end
 
 end
+
+get '/vote_up/:id' do
+
+	QuestionVote.create(type: "up",question_id: params[:id])
+
+	redirect "/question/" + params[:id]
+end
+
+get '/vote_down/:id' do
+	
+	QuestionVote.create(type: "down",question_id: params[:id])
+
+	redirect "/question/" + params[:id]
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

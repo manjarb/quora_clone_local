@@ -11,6 +11,18 @@
 				<% end %>
 			</p>
 		</div>
+		<div class="vote_box">
+			<% if upVotes = QuestionVote.where(type: "up",question_id: question.id) %>
+				<a href="/vote_up/<%= question.id %>" class="btn btn-success" role="alert">
+					+ <%= upVotes.length %>
+				</a>
+			<% end %>
+			<% if downVotes = QuestionVote.where(type: "down",question_id: question.id) %>
+				<a href="/vote_down/<%= question.id %>" class="btn btn-danger" role="alert">
+					- <%= downVotes.length %>
+				</a>
+			<% end %>
+		</div>
 	</section>
 	<% if answers = Answer.where(question_id: question.id) %>
 		<section class="answer-details-box">

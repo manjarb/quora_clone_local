@@ -32,7 +32,7 @@
 							<h2><%= question.headline %></h2>
 						</a>
 						<h3>
-							<% if user = User.find_by(id: question.user_id) %>
+							<% if user = User.find_by(id: question.id) %>
 								<%= user.username %>
 							<% end %>
 						</h3>
@@ -41,6 +41,19 @@
 								<%= question.content %>
 							</p>
 						</a>
+						<br>
+						<div class="vote_box">
+							<% if upVotes = QuestionVote.where(type: "up",question_id: question.id) %>
+								<div class="btn btn-success" role="alert">
+									+ <%= upVotes.length %>
+								</div>
+							<% end %>
+							<% if downVotes = QuestionVote.where(type: "down",question_id: question.id) %>
+								<div class="btn btn-danger" role="alert">
+									- <%= downVotes.length %>
+								</div>
+							<% end %>
+						</div>
 					</div>
 				<% end %>
 
