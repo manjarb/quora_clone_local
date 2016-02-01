@@ -1,7 +1,7 @@
-require_relative '../app/models/question'
-require_relative '../app/models/answer'
-require_relative '../app/models/user'
-require 'faker'
+# require_relative '../app/models/question'
+# require_relative '../app/models/answer'
+# require_relative '../app/models/user'
+# require 'faker'
 
 class TaskSeed
 	def self.faker
@@ -41,4 +41,4 @@ class TaskSeed
 	end
 end
 
-TaskSeed.faker
+# TaskSeed.faker
