@@ -30,34 +30,4 @@ class User < ActiveRecord::Base
         
     end
 
-    # def self.password_convert(password_ori)
-    #     p_p = Password.create(password_ori)
-    #     p_h ||= Password.new(p_p)
-    #     return p_h
-    # end
-
-    #before_validation :checking_confirm_password
-
-    # def initialize(signup = {})
-    # 	#@signup = signup
-    # 	super()
-    # 	@username = signup["username"]
-    # 	@email = signup["email"]
-    # 	@password = signup["password"]
-    # 	@confirm_password = signup["confirm_password"]
-    # end
-
-	# def create_user
-	# 	p_p = Password.create(@password)
-	# 	p_h ||= Password.new(p_p)
-	# 	user_hash = {:username => @username,:email => @email, :encrypted_password => p_h}
-
-	# 	User.create(user_hash)
-
-	# end
-
-    # def list
-    # 	User.all
-    # end
-
 end

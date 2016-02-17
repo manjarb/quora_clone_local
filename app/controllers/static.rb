@@ -46,7 +46,6 @@ post '/login' do
 	else
 		redirect '/'
 	end
-
 	
 end
 
